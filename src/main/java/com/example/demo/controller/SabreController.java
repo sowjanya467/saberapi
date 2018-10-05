@@ -86,7 +86,7 @@ public class SabreController {
 		con.setRequestMethod("GET");
 		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		con.setRequestProperty("Authorization",
-				"Bearer T1RLAQKFklPTCntgRgSfqoue7ql9/ADz9RCsg5hTcOda4WU1tZxCEMPCAADA60jhIA5iXeU8nPE4ms/mdkqAJpSIEFeOtUf7dKd9bWZeSDZEw7yjcVZ6rRnFEoV9y8WEzdQBBBDazuhi2lS4MtGt5sNFxEcdZxZf8Og39vVc5KUl9gmWrW7Bn95IzGgjVZP1TET+Sr8zBet3kfEfHs4nOoEo5rwdkkp6vRmWp4gDKdA8ZQ1WvY7s6TOuP3q071VaVaoC4Ut98fQAsJuWvOIb88f8YGv+nlM6OaGA7mVGdHe40kqMCJz/s3DTyao0");
+				"Bearer "+token);
 		int responseCode = con.getResponseCode();
 		System.out.println("POST Response Code :: " + responseCode);
 
@@ -103,7 +103,7 @@ public class SabreController {
 			System.out.println(response.toString());
 			return response.toString();
 		} else {
-			System.out.println("POST request is not working");
+			System.out.println("get request is not working");
 
 		}
 		return "unsuccessfull";
