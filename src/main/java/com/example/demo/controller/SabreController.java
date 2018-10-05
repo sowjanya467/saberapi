@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * 
+ * @author bridgelabz
+ *
+ */
 @RestController
 @RequestMapping(value = "/saber")
 public class SabreController {
@@ -25,7 +29,12 @@ public class SabreController {
 
 	private static final String Basic_PARAMS = "grant_type=client_credentials&username=ss&password=ss";
 
-	@RequestMapping(value = "/posttoken", method = RequestMethod.POST)
+	/**
+	 * method to get token
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/getToken", method = RequestMethod.GET)
 	public String getToken() throws IOException {
 
 		URL obj = new URL(url);
@@ -64,7 +73,13 @@ public class SabreController {
 		return "unsuccessfull";
 	}
 
-	@RequestMapping(value = "/getflights", method = RequestMethod.POST)
+	/**
+	 * method to get low cost fare flights
+	 * @param token
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/getflights", method = RequestMethod.GET)
 	public String getCheaperFlights(@RequestParam String token) throws IOException {
 		String urlget = "https://api-crt.cert.havail.sabre.com/v1/shop/flights/cheapest/fares/LAX?pointofsalecountry=US";
 		URL obj = new URL(urlget);
@@ -94,26 +109,7 @@ public class SabreController {
 
 		}
 		return "unsuccessfull";
-		// con.setRequestProperty("Bearer", token);
-		// con.setRequestProperty("Accept", "application/x-www-form-urlencoded");
-		/*
-		 * HttpClient client = new DefaultHttpClient(); HttpGet request = new
-		 * HttpGet(url);
-		 * 
-		 * // add request header // request.addHeader("User-Agent", USER_AGENT);
-		 * 
-		 * HttpResponse response = client.execute(request);
-		 * 
-		 * System.out.println("\nSending 'GET' request to URL : " + urlget);
-		 * System.out.println("Response Code : " +
-		 * response.getStatusLine().getStatusCode()); BufferedReader rd = new
-		 * BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-		 * 
-		 * StringBuffer result = new StringBuffer(); String line = ""; while ((line =
-		 * rd.readLine()) != null) { result.append(line); }
-		 * 
-		 * System.out.println(result.toString()); return url;
-		 */
+		
 
 	}
 
