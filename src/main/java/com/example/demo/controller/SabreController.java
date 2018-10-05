@@ -1,26 +1,25 @@
 package com.example.demo.controller;
-
+/*************************************************************************************************************
+*
+* purpose:Spring program to access Sabre APIs and get the list of cheap flights to a certain destination.
+* 
+* @author sowjanya467
+* @version 1.0
+* @since 05-10-18
+*
+**************************************************************************************************/
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-/**
- * 
- * @author bridgelabz
- *
- */
+
 @RestController
 @RequestMapping(value = "/saber")
 public class SabreController {
@@ -30,8 +29,8 @@ public class SabreController {
 	private static final String Basic_PARAMS = "grant_type=client_credentials&username=ss&password=ss";
 
 	/**
-	 * method to get token
-	 * @return
+	 * purpose: method to get token
+	 * @return token
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/getToken", method = RequestMethod.GET)
@@ -74,7 +73,7 @@ public class SabreController {
 	}
 
 	/**
-	 * method to get low cost fare flights
+	 * purpose:method to get low cost fare flights
 	 * @param token
 	 * @return
 	 * @throws IOException
@@ -87,8 +86,7 @@ public class SabreController {
 		con.setRequestMethod("GET");
 		con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		con.setRequestProperty("Authorization",
-				"Bearer T1RLAQKfNXIMMr8VDs/vm2T11bQGlN+g7RAIGrucFlO5LNlUVyqBLrUnAACwMCkgd3Aw0olTL51ImsrYkrdOVszfNKStlcqGnBYNFQfdAcQumulBeTJ8Me7rgSVhca3FC0L0GApWTjZcAALW8nCpUyfMPg3V92AYvDG7MV8DoRneoWIZaOEexB7OpsFUbO+8fFKxd/ajYcHvF9uyFKPh2IvAadPrMEaCZrVkKPO74ZEH0yu/jJLsRnKUtICgxodbX7LotOBCt4RgFtlQyoPlhSniXQzz3q/crbh5I1o*");
-
+				"Bearer T1RLAQKFklPTCntgRgSfqoue7ql9/ADz9RCsg5hTcOda4WU1tZxCEMPCAADA60jhIA5iXeU8nPE4ms/mdkqAJpSIEFeOtUf7dKd9bWZeSDZEw7yjcVZ6rRnFEoV9y8WEzdQBBBDazuhi2lS4MtGt5sNFxEcdZxZf8Og39vVc5KUl9gmWrW7Bn95IzGgjVZP1TET+Sr8zBet3kfEfHs4nOoEo5rwdkkp6vRmWp4gDKdA8ZQ1WvY7s6TOuP3q071VaVaoC4Ut98fQAsJuWvOIb88f8YGv+nlM6OaGA7mVGdHe40kqMCJz/s3DTyao0");
 		int responseCode = con.getResponseCode();
 		System.out.println("POST Response Code :: " + responseCode);
 
